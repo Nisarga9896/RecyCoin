@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-label="Marketplace item">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#04121a"/>
+      <stop offset="0.55" stop-color="#03110c"/>
+      <stop offset="1" stop-color="#020509"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="55%">
+      <stop offset="0" stop-color="#5eead4" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#5eead4" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#5eead4" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="560" fill="url(#bg)"/>
+  <rect width="800" height="560" fill="url(#grid)"/>
+  <circle cx="400" cy="250" r="190" fill="url(#glow)"/>
+  <text x="400" y="300" text-anchor="middle" font-size="160">📦</text>
+  <text x="400" y="410" text-anchor="middle" fill="#5eead4" font-family="monospace" font-size="20" letter-spacing="8" font-weight="700">RECYCOIN ITEM</text>
+  <text x="400" y="448" text-anchor="middle" fill="#eafff8" fill-opacity=".45" font-family="sans-serif" font-size="16">RECYCOIN EXCHANGE</text>
+  <rect x="28" y="28" width="744" height="504" rx="28" fill="none" stroke="#5eead4" stroke-opacity=".16"/>
+</svg>
