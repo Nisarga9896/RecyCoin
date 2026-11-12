@@ -13,7 +13,25 @@ A full-stack MERN platform that gamifies e-waste sorting and turns RecyPoints in
 ![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?logo=mongodb&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white)
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-recy--coin.vercel.app-000000?style=for-the-badge&logo=vercel)](https://recy-coin.vercel.app)
+[![API](https://img.shields.io/badge/API-recycoin--api.onrender.com-46E3B7?style=for-the-badge)](https://recycoin-api.onrender.com/api/health)
+[![GitHub](https://img.shields.io/badge/GitHub-Nisarga9896%2FRecyCoin-181717?style=for-the-badge&logo=github)](https://github.com/Nisarga9896/RecyCoin)
+
 </div>
+
+---
+
+## Live Links
+
+| What | Link |
+| --- | --- |
+| **Live app** | [recy-coin.vercel.app](https://recy-coin.vercel.app) |
+| Marketplace | [recy-coin.vercel.app/marketplace](https://recy-coin.vercel.app/marketplace) |
+| Sorting game | [recy-coin.vercel.app/game](https://recy-coin.vercel.app/game) |
+| API health | [recycoin-api.onrender.com/api/health](https://recycoin-api.onrender.com/api/health) |
+| Marketplace API | [recycoin-api.onrender.com/api/items](https://recycoin-api.onrender.com/api/items) |
+| Source code | [github.com/Nisarga9896/RecyCoin](https://github.com/Nisarga9896/RecyCoin) |
+| Releases | [github.com/Nisarga9896/RecyCoin/releases](https://github.com/Nisarga9896/RecyCoin/releases) |
 
 ---
 
@@ -144,12 +162,12 @@ Copy `server/.env.example` to `server/.env`.
 | `DB_PATH` | `./.data/mongodb` | Local embedded database folder |
 | `MONGODB_URI` | `mongodb://127.0.0.1:27017/ewaste` | Atlas URI in production |
 | `JWT_SECRET` | random long string | Change before deploying |
-| `CLIENT_ORIGIN` | `http://localhost:5173` | Frontend URL allowed by CORS |
+| `CLIENT_ORIGIN` | `http://localhost:5173` | Frontend URL allowed by CORS; use `https://recy-coin.vercel.app` in production |
 
 Frontend production API URL:
 
 ```env
-VITE_API_URL=https://your-render-service.onrender.com/api
+VITE_API_URL=https://recycoin-api.onrender.com/api
 ```
 
 ---
@@ -157,6 +175,13 @@ VITE_API_URL=https://your-render-service.onrender.com/api
 ## Deploy: Vercel + Render + MongoDB Atlas
 
 Neither Vercel nor Render provides MongoDB. Use **MongoDB Atlas** for the database, **Render** for the Express API, and **Vercel** for the React frontend.
+
+Current deployment:
+
+- Frontend: [https://recy-coin.vercel.app](https://recy-coin.vercel.app)
+- Backend: [https://recycoin-api.onrender.com](https://recycoin-api.onrender.com)
+- Health check: [https://recycoin-api.onrender.com/api/health](https://recycoin-api.onrender.com/api/health)
+- Database: MongoDB Atlas cluster `ewaste-cluster` (`ewaste` database)
 
 ### 1. MongoDB Atlas
 
@@ -177,7 +202,7 @@ $env:MONGODB_URI="<your-atlas-uri>"
 npm run reset
 ```
 
-This creates the 18 marketplace items, demo accounts, and sample order in Atlas.
+This creates the 18 marketplace items and demo accounts in Atlas. `reset` starts with an empty orders collection, so the sample order is not created.
 
 ### 2. Render — backend
 
@@ -191,7 +216,7 @@ This creates the 18 marketplace items, demo accounts, and sample order in Atlas.
 DB_MODE=uri
 MONGODB_URI=<your-atlas-uri>
 JWT_SECRET=<long-random-secret>
-CLIENT_ORIGIN=https://<your-vercel-app>.vercel.app
+CLIENT_ORIGIN=https://recy-coin.vercel.app
 ```
 
 Do not set `PORT`; Render provides it.
