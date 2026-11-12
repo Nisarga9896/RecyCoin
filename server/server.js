@@ -10,7 +10,27 @@ dotenv.config();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173' }));
+const configuredOrigins = (process.env.CLIENT_ORIGIN || '')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+const allowedOrigins = new Set([
+  'http://localhost:5173',
+  'https://recy-coin.vercel.app',
+  ...configuredOrigins,
+]);
+const allowAllOrigins = configuredOrigins.includes('*');
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowAllOrigins || allowedOrigins.has(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error(`Origin not allowed by CORS: ${origin}`));
+    },
+  })
+);
 app.use(express.json({ limit: '10mb' }));
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok', service: 'recycoin-api' }));
